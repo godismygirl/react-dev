@@ -1,0 +1,213 @@
+{
+    "profile" :  [{
+        "key": "1",
+        "name": "胡彦斌",
+        "age": 32,
+        "address": "西湖区湖底公园1号"
+      }, 
+      {
+        "key": "2",
+        "name": "王力宏",
+        "age": 32,
+        "address": "西湖区湖底公园2号"
+      },
+      {
+        "key": "3",
+        "name": "李瑞环",
+        "age": 32,
+        "address": "西湖区湖底公园3号"
+      },{
+        "key": "4",
+        "name": "刘家了",
+        "age": 32,
+        "address": "西湖区湖底公园4号"
+      },{
+        "key": "5",
+        "name": "孙悟空",
+        "age": 32,
+        "address": "西湖区湖底公园5号"
+      },{
+        "key": "6",
+        "name": "猪八戒",
+        "age": 32,
+        "address": "西湖区湖底公园6号"
+      },{
+        "key": "7",
+        "name": "唐僧",
+        "age": 32,
+        "address": "西湖区湖底公园7号"
+      },{
+        "key": "8",
+        "name": "李磊",
+        "age": 32,
+        "address": "西湖区湖底公园8号"
+      },{
+        "key": "9",
+        "name": "王刚",
+        "age": 32,
+        "address": "西湖区湖底公园9号"
+      },{
+        "key": "10",
+        "name": "王小二",
+        "age": 32,
+        "address": "西湖区湖底公园10号"
+      },{
+        "key": "11",
+        "name": "金刚",
+        "age": 32,
+        "address": "西湖区湖底公园11号"
+      }],
+    "menuData" : [
+      {
+        "name": "dashboard",
+        "icon": "dashboard",
+        "path": "/dashboard",
+        "children": [
+          {
+            "name": "分析页",
+            "path": "/dashboard/analysis"
+          },
+          {
+            "name": "监控页",
+            "path": "/dashboard/monitor"
+          },
+          {
+            "name": "工作台",
+            "path": "/dashboard/workplace"
+          }
+        ]
+      },
+      {
+        "name": "表单页",
+        "icon": "form",
+        "path": "/form",
+        "children": [
+          {
+            "name": "基础表单",
+            "path": "/form/basic-form"
+          },
+          {
+            "name": "分步表单",
+            "path": "/form/step-form"
+          },
+          {
+            "name": "高级表单",
+            "authority": "admin",
+            "path": "/form/advanced-form"
+          }
+        ]
+      },
+      {
+        "name": "列表页",
+        "icon": "table",
+        "path": "/list",
+        "children": [
+          {
+            "name": "查询表格",
+            "path": "/list/table-list"
+          },
+          {
+            "name": "标准列表",
+            "path": "/list/basic-list"
+          },
+          {
+            "name": "卡片列表",
+            "path": "/list/card-list"
+          },
+          {
+            "name": "搜索列表",
+            "path": "/list/search",
+            "children": [
+              {
+                "name": "搜索列表（文章）",
+                "path": "/list/search/articles"
+              },
+              {
+                "name": "搜索列表（项目）",
+                "path": "/list/search/projects"
+              },
+              {
+                "name": "搜索列表（应用）",
+                "path": "/list/search/applications"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "详情页",
+        "icon": "profile",
+        "path": "/profile",
+        "children": [
+          {
+            "name": "基础详情页",
+            "path": "/profile/basic"
+          },
+          {
+            "name": "高级详情页",
+            "path": "/profile/advanced",
+            "authority": "admin"
+          }
+        ]
+      },
+      {
+        "name": "结果页",
+        "icon": "check-circle-o",
+        "path": "/result",
+        "children": [
+          {
+            "name": "成功",
+            "path": "/result/success"
+          },
+          {
+            "name": "失败",
+            "path": "/result/fail"
+          }
+        ]
+      },
+      {
+        "name": "异常页",
+        "icon": "warning",
+        "path": "/exception",
+        "children": [
+          {
+            "name": "403",
+            "path": "/exception/403"
+          },
+          {
+            "name": "404",
+            "path": "/exception/404"
+          },
+          {
+            "name": "500",
+            "path": "/exception/500"
+          },
+          {
+            "name": "触发异常",
+            "path": "/exception/trigger",
+            "hideInMenu": true
+          }
+        ]
+      },
+      {
+        "name": "账户",
+        "icon": "user",
+        "path": "/user",
+        "authority": "guest",
+        "children": [
+          {
+            "name": "登录",
+            "path": "/user/login"
+          },
+          {
+            "name": "注册",
+            "path": "/user/register"
+          },
+          {
+            "name": "注册结果",
+            "path": "/user/register-result"
+          }
+        ]
+      }
+    ]
+}
