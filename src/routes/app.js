@@ -1,12 +1,15 @@
 import React from 'react';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import './app.less';
-import SiderMenu from '../components/SiderMenu';
-import NavStore from '../components/NavStore';
+import Layout from '../layouts/Layout';
+import SiderMenu from '../components/SiderMenu/SiderMenu';
+import NavStore from '../components/SiderMenu/NavStore';
 
 import TableView from './tableView';
-
 import UserView from './userView';
+
+const {Header, Sider, Content} = Layout;
+
 
 const navStore = new NavStore('/mock/menuData');
 
@@ -23,25 +26,27 @@ class App extends React.Component {
     }
     componentDidMount(){
        // alert('push')
-        this.props.history.push(navStore.currentPath)
+       this.props.history.push(navStore.currentPath)
     }
     render(){
         return (
-            <div>
-                <div className="sider">
-                   <SiderMenu 
-                    dataSource = {navStore}
-                    currentPath = '/list/table-list'
-                   />
-                </div>
-                <div className="content">
+            <Layout>
+                <Header>
+
+                </Header>
+                <Sider>
+                    <SiderMenu 
+                        dataSource = {navStore}
+                        currentPath = '/list/table-list'
+                    />
+                </Sider>
+                <Content>
                     <Switch>
                         <Route path='/list/table-list' component={TableView}/>
                         <Route path='/list/basic-list' component={UserView}/>
-                        
                     </Switch>
-                </div>
-            </div>
+                </Content>
+            </Layout>
         )
     }
 }

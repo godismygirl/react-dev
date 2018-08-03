@@ -33,7 +33,11 @@ export default class TableView extends React.PureComponent {
                     <Button type="primary" >Search</Button>
                 </div>
                 <div className="result-area">
-                    <Grid columns={columns} dataSource={testData} reloadInterval="3000"/>
+                    <Grid 
+                        columns={columns} 
+                        dataSource={testData} 
+                        reloadInterval="3000"
+                        />
                 </div>
             </div>
         )
