@@ -10,8 +10,8 @@ const { SubMenu } = Menu;
 export default class SiderMenu extends React.Component {
 
     componentWillMount(){
-        this.props.dataSource.currentPath = this.props.currentPath;
-        this.props.dataSource.load();
+        this.props.proxy.currentPath = this.props.currentPath;
+        this.props.proxy.load();
     }
     
     /**
@@ -38,7 +38,7 @@ export default class SiderMenu extends React.Component {
             to={itemPath}
             target={target}
             replace={itemPath === currentPath}
-            onClick={() => this.props.dataSource.goTo(itemPath)}
+            onClick={() => this.props.proxy.goTo(itemPath)}
         >
             {icon}
             <span>{name}</span>
@@ -131,22 +131,22 @@ export default class SiderMenu extends React.Component {
     };
 
     isMainMenu = key => {
-        const { menuData } = this.props.dataSource;
+        const { menuData } = this.props.proxy;
         return menuData.some(item => key && (item.key === key || item.path === key));
     };
 
     handleOpenChange = openKeys => {
         const lastOpenKey = openKeys[openKeys.length - 1];
         const moreThanOne = openKeys.filter(openKey => this.isMainMenu(openKey)).length > 1;
-        this.props.dataSource.setOpenKeys( moreThanOne? [lastOpenKey] : [...openKeys])
+        this.props.proxy.setOpenKeys( moreThanOne? [lastOpenKey] : [...openKeys])
     };
 
     toggleSiderMenu = () => {
-        this.props.dataSource.toggleCollapsed()
+        this.props.proxy.toggleCollapsed()
     }
 
     render() {
-        const {menuData, isCollapsed, openKeys, selectedKeys} = this.props.dataSource;  
+        const {menuData, isCollapsed, openKeys, selectedKeys} = this.props.proxy;  
         // Don't show popup menu when it is collapsed
         const menuProps = isCollapsed? {} : { openKeys };
         const siderWidth = isCollapsed? '80px':'250px';

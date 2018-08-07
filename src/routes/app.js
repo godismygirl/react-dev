@@ -3,7 +3,7 @@ import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import './app.less';
 import Layout from '../layouts/Layout';
 import SiderMenu from '../components/SiderMenu/SiderMenu';
-import NavStore from '../components/SiderMenu/NavStore';
+import SiderMenuProxy from '../components/SiderMenu/SiderMenuProxy';
 
 import TableView from './tableView';
 import UserView from './userView';
@@ -11,7 +11,7 @@ import UserView from './userView';
 const {Header, Sider, Content} = Layout;
 
 
-const navStore = new NavStore('/mock/menuData');
+const proxy = new SiderMenuProxy('/mock/menuData');
 
 class App extends React.Component {
     goToUserview = () => {
@@ -26,7 +26,7 @@ class App extends React.Component {
     }
     componentDidMount(){
        // alert('push')
-       this.props.history.push(navStore.currentPath)
+       this.props.history.push(proxy.currentPath)
     }
     render(){
         return (
@@ -36,8 +36,9 @@ class App extends React.Component {
                 </Header>
                 <Sider>
                     <SiderMenu 
-                        dataSource = {navStore}
+                        proxy = {proxy}
                         currentPath = '/list/table-list'
+                        
                     />
                 </Sider>
                 <Content>

@@ -23,7 +23,7 @@ export const getFlatMenuKeys = menu =>
     return keys;
   }, []);
 
-export default class NavStore {
+export default class SiderMenuProxy {
 
     constructor(url){
         this.setUrl(url)
@@ -79,12 +79,12 @@ export default class NavStore {
 
     @action
     goTo(pathname){
-        console.log(pathname)
         if(pathname && pathname.indexOf('/') !== -1){
             this.currentPath = pathname
         }
     }
 
+    @action
     setUrl(url){
         if(url && url.indexOf('/')!== -1){
             this.requestUrl = url;

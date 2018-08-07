@@ -15,7 +15,7 @@ const columns = [{
     dataIndex: 'age',
     key: 'age',
   }, {
-    title: '住址',
+    title: '家庭住址',
     dataIndex: 'address',
     key: 'address',
   }];
