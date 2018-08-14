@@ -3,15 +3,12 @@ import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import './app.less';
 import Layout from '../layouts/Layout';
 import SiderMenu from '../components/SiderMenu/SiderMenu';
-import SiderMenuProxy from '../components/SiderMenu/SiderMenuProxy';
+import { globalProxy } from '../common/globalProxy'
 
 import TableView from './tableView';
 import UserView from './userView';
 
 const {Header, Sider, Content} = Layout;
-
-
-const proxy = new SiderMenuProxy('/mock/menuData');
 
 class App extends React.Component {
     goToUserview = () => {
@@ -26,19 +23,26 @@ class App extends React.Component {
     }
     componentDidMount(){
        // alert('push')
-       this.props.history.push(proxy.currentPath)
+       //this.props.history.push(proxy.currentPath)
     }
+
+    logState(){
+        console.log(
+            globalProxy.get('my-enu')
+        )
+    }
+
     render(){
         return (
             <Layout>
                 <Header>
-
+                    <button onClick={this.logState} >log</button>
                 </Header>
                 <Sider>
                     <SiderMenu 
-                        proxy = {proxy}
+                        id="my-enu"
                         currentPath = '/list/table-list'
-                        
+                        url = '/mock/menuData'
                     />
                 </Sider>
                 <Content>

@@ -2,6 +2,8 @@ import React from 'react';
 import { Menu, Icon } from 'antd';
 import { Link } from 'react-router-dom';
 import {observer} from 'mobx-react';
+import SiderMenuProxy from './SiderMenuProxy';
+import {globalProxy} from '../../common/globalProxy';
 import './index.less';
 
 const { SubMenu } = Menu;
@@ -9,9 +11,16 @@ const { SubMenu } = Menu;
 @observer
 export default class SiderMenu extends React.Component {
 
+    constructor(props){
+        super(props);
+        this.proxy = new SiderMenuProxy();
+        this.proxy.setUrl(props.url);
+        globalProxy.set(props.id, this.proxy);
+    }
+
     componentWillMount(){
-        this.props.proxy.currentPath = this.props.currentPath;
-        this.props.proxy.load();
+        this.proxy.currentPath = this.props.currentPath;
+        this.proxy.load();
     }
     
     /**
@@ -38,7 +47,7 @@ export default class SiderMenu extends React.Component {
             to={itemPath}
             target={target}
             replace={itemPath === currentPath}
-            onClick={() => this.props.proxy.goTo(itemPath)}
+            onClick={() => this.proxy.goTo(itemPath)}
         >
             {icon}
             <span>{name}</span>
@@ -131,22 +140,22 @@ export default class SiderMenu extends React.Component {
     };
 
     isMainMenu = key => {
-        const { menuData } = this.props.proxy;
+        const { menuData } = this.proxy;
         return menuData.some(item => key && (item.key === key || item.path === key));
     };
 
     handleOpenChange = openKeys => {
         const lastOpenKey = openKeys[openKeys.length - 1];
         const moreThanOne = openKeys.filter(openKey => this.isMainMenu(openKey)).length > 1;
-        this.props.proxy.setOpenKeys( moreThanOne? [lastOpenKey] : [...openKeys])
+        this.proxy.setOpenKeys( moreThanOne? [lastOpenKey] : [...openKeys])
     };
 
     toggleSiderMenu = () => {
-        this.props.proxy.toggleCollapsed()
+        this.proxy.toggleCollapsed()
     }
 
     render() {
-        const {menuData, isCollapsed, openKeys, selectedKeys} = this.props.proxy;  
+        const {menuData, isCollapsed, openKeys, selectedKeys} = this.proxy;
         // Don't show popup menu when it is collapsed
         const menuProps = isCollapsed? {} : { openKeys };
         const siderWidth = isCollapsed? '80px':'250px';
