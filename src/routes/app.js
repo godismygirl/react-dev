@@ -13,7 +13,7 @@ const {Header, Sider, Content} = Layout;
 
 const formData = [
     { row : [
-            {label:'条件一', span:8, item:{
+            {label:'我的选择条件一', span:8, item:{
                 type:'input',
                 id:'input1',
                 placeHolder:'test placeholder',
@@ -34,13 +34,41 @@ const formData = [
         collapsed:true 
     },
     { row : [
-            {label:'机车种类',item:{type:'input',id:'input7',placeHolder:'test placeholder7'},validate:{rule:'', isRequired:true, errorText:'输入的种类有误'}},
-            {label:'电话号码',item:{type:'input',id:'input8',placeHolder:'test placeholder8'}},
-            {label:'智障等级',item:{type:'input',id:'input9',placeHolder:'test placeholder9'}}
+            {label:'机车种类',item:{type:'input',id:'input7',placeHolder:'test placeholder7'},span:16},
+            {label:'电话号码',item:{type:'input',id:'input8',placeHolder:'test placeholder8'},span:8},
         ], 
         collapsed:true 
     }
 ]
+
+const verticalFormData = [
+    { row : [
+            {label:'我的选择条件一', item:{
+                type:'input',
+                id:'input1',
+                placeHolder:'test placeholder',
+                rules:{
+                    required: true,
+                    message: 'Input something!',
+                }
+            }}
+        ] 
+    },
+    { row : [
+            {label:'测试条件',item:{type:'input',id:'input4',placeHolder:'test placeholder4'}},
+ 
+        ], 
+        //collapsed:true 
+    },
+    { row : [
+            {label:'机车种类',item:{type:'input',id:'input7',placeHolder:'test placeholder7'}},
+
+        ], 
+        //collapsed:true 
+    }
+]
+
+
 
 class App extends React.Component {
     goToUserview = () => {
@@ -78,12 +106,22 @@ class App extends React.Component {
                     />
                 </Sider>
                 <Content>
-                    <div>
+                    <div style={{paddingTop:'20px'}}>
                         <Form 
                             id="test-form" 
+                            className="my-form"
                             data={formData} 
                             showClearButton={true}
-                            buttonPositon="bottom"
+                            buttonPosition="bottom"
+                        />
+                        <div style={{borderBottom:'1px dashed #ccc', marginTop:'20px',marginBottom:'20px'}}></div>
+                        <Form 
+                            id="test-form2" 
+                            className="my-form"
+                            data={verticalFormData}
+                            buttonText = "立即注册"
+                            //showClearButton={true}
+                            //buttonPosition="bottom"
                         />
                     </div>
                     <Switch>
