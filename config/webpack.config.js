@@ -1,6 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const customTheme = require('../src/common/theme');
+
 require('whatwg-fetch');
 
 module.exports = {
@@ -36,7 +38,10 @@ module.exports = {
                     "css-loader",
                     {
                         loader: "less-loader",
-                        options: {javascriptEnabled: true}
+                        options: {
+                            javascriptEnabled: true,
+                            modifyVars: customTheme
+                        }
                     }],
             },
             {
