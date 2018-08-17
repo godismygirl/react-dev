@@ -3,14 +3,19 @@ const store = {};
 export const globalProxy = {
     set : (id, proxy) => {
         if(store[id]){
-            throw 'duplicated proxy id'
+            console.error('duplicated proxy id') 
         }
         store[id] = proxy;
     },
     get : id => {
         if(!store[id]){
-            throw 'proxy id not exist'
+            console.error('proxy id not exist')
         }
         return store[id]
+    },
+    remove : (id) => {
+        if(!store[id]){
+            delete store[id]
+        }
     }
 }

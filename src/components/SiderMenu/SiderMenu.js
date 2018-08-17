@@ -23,6 +23,10 @@ export default class SiderMenu extends React.Component {
         this.proxy.load();
     }
     
+    componentWillUnmount(){
+        this.proxy = null;
+        globalProxy.remove(this.props.id);
+    }
     /**
      * 判断是否是http链接.返回 Link 或 a
      * Judge whether it is http link.return a or Link
